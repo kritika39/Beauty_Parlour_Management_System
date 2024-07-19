@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Services</title>
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            font-family: Impact 'Arial Narrow Bold', sans-serif;
+        }
+
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: lightblue;
+            height: 100vh;
+            overflow: auto;
+        }
+
+
+        .container {
+            position: relative;
+            width: 1100px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            padding: 30px;
+        }
+
+
+        .services {
+            position: relative;
+            max-width: 300px;
+            height: 150px;
+            background: rgb(210, 52, 235);
+            margin: 30px 10px;
+            padding: 20px 15px;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 3px 50px rgba(0, 0, 0, 0.5);
+            transition: 0.4s ease-in-out;
+        }
+
+
+        .services:hover {
+            height: 300px;
+        }
+
+
+        .cimg {
+            position: relative;
+            width: 260px;
+            height: 200px;
+            top: -60px;
+            left: 20px;
+            z-index: 1;
+            box-shadow: 0 3px 50px rgba(0, 0, 0, 0.5);
+        }
+
+
+        .cimg img {
+            max-width: 100%;
+            height: 100%;
+            border-radius: 6px;
+        }
+
+
+        .cdetail {
+            position: relative;
+            margin-top: -140px;
+            padding: 10px 15px;
+            text-align: center; 
+            color: black;
+            font-family: monospace;
+            visibility: hidden;
+            opacity: 0;
+            transition: 0.4s ease-in-out;
+        }
+
+
+        .services:hover .cdetail {
+            visibility: visible;
+            opacity: 1;
+            margin-top: -50px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="services">
+            <div class="cimg">
+                <img src="https://th.bing.com/th/id/OIP.Wd5iCbqczf7Ec1JRo_BQ_AHaEK?rs=1&pid=ImgDetMain" width="500px">
+            </div>
+            <div class="cdetail">
+                <h2>Online Payment</h2>
+                <p>We also provide online payment for your easy use and to save time.</p>
+            </div>
+        </div>
+
+
+        <div class="services">
+            <div class="cimg">
+                <img src="https://thumbs.dreamstime.com/b/vacation-concept-painted-black-text-online-booking-digital-data-paper-background-scheme-hand-drawn-vacation-icons-108219163.jpg" width="500px">
+            </div>
+            <div class="cdetail">
+                <h2>Online Booking</h2>
+                <p>Salon clients can easily book and cancel appointments through a unique booking link provided by the system. This ensures convenient bookings via social media or the salon website .</p>
+            </div>
+        </div>
+
+
+        <div class="services">
+            <div class="cimg">
+                <img src="https://th.bing.com/th/id/OIP.krJm05DPwBbBZPZHqmRNXgHaE8?rs=1&pid=ImgDetMain" width="500px">
+            </div>
+            <div class="cdetail">
+                <h2>Appointment Scheduling</h2>
+                <p>Clients can book appointments online, and salon administrators can approve or cancel them .</p>
+            </div>
+        </div>
+
+
+        <div class="services">
+            <div class="cimg">
+                <img src="https://static2.bigstockphoto.com/8/2/1/large1500/128427074.jpg" width="500px">
+            </div>
+            <div class="cdetail">
+                <h2>User-Friendly Interface</h2>
+                <p>We provide user friendly interface which is easy to use and navigatue and efficient in meeting the needs of the users .</p>
+            </div>
+        </div>
+
+
+        <div class="services">
+            <div class="cimg">
+                <img src="https://th.bing.com/th/id/OIP.__X6bbbSFxHot4u4ej-aZAAAAA?rs=1&pid=ImgDetMain" width="500px">
+            </div>
+            <div class="cdetail">
+                <h2>Customer Management</h2>
+                <p>Maintain a database of customer profiles with contact details and service history.</p>
+            </div>
+        </div>
+
+
+        <div class="services">
+            <div class="cimg">
+                <img src="https://1.bp.blogspot.com/-0KA8GVuBvD8/X6lFc65getI/AAAAAAAAALg/G_cmZgmtqlY-AdnNgOxlzFnILCkKzn7yACNcBGAsYHQ/s1200/salon-business-FB.png" width="500px">
+            </div>
+            <div class="cdetail">
+                <h2>Service Tracking</h2>
+                <p> Keep track of services provided, including details like service type, duration, and cost. </p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+
+

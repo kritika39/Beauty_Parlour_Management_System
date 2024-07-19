@@ -1,0 +1,54 @@
+
+
+
+{%block title%}
+Notification
+{% endblock %}
+{% block contents %}
+
+    <style>
+        .notification-list {
+            list-style-type: none;
+            padding: 0;
+        }
+    
+        .notification-list li {
+            background-color: #f9f9f9;
+            margin: 10px 0;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+    
+        .notification-list li a {
+            text-decoration: none;
+            color: #007bff;
+            margin-left: 10px;
+        }
+    
+        .notification-list li a:hover {
+            text-decoration: underline;
+        }
+    
+        .no-notifications {
+            font-style: italic;
+            color: #888;
+        }
+    </style>
+ 
+    
+    {% if notifications %}
+        <h3>Notifications</h3>
+        <ul class="notification-list">
+            {% for notification in notifications %}
+                <li>
+                    {{ notification.message }}
+                    <a href="{% url 'mark_notification_as_read' notification.id %}">Mark as read</a>
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p class="no-notifications">No new notifications.</p>
+    {% endif %}
+    {% endblock %}
+    

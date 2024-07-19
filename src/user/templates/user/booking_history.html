@@ -1,0 +1,52 @@
+{% extends 'homepage.html' %}
+{% load static %}
+ {% block title %}
+ Booking History
+{% endblock %}
+
+{% block content %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Booking History</title>
+    <link rel="stylesheet" href="styles.css">
+    
+</head>
+<body>
+
+    <h2>Booking History</h2>
+   
+    {% if appointments %}
+        <table class="table table-bordered">
+            <thead>
+                <tr class="table-dark">
+                    <th>Salon</th>
+                    <th>Service</th>
+                    <th>Date</th>
+                    <th>Time</th>
+                    
+                </tr>
+            </thead>
+            <tbody>
+                {% for appointment in appointments %}
+                    <tr>
+                        <td>{{ appointment.salon.name }}</td>
+                        <td>{{ appointment.service.name }}</td>
+                        <td>{{ appointment.appointment_date }}</td>
+                        <td>{{ appointment.appointment_time }}</td>
+                        
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p>No bookings found.</p>
+    {% endif %}
+</body>
+</html>
+
+
+{% endblock %}

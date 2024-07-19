@@ -1,0 +1,49 @@
+{% extends 'homepage.html' %}
+{% block title %} 
+Salons 
+{% endblock %} 
+
+{% block content %}
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        .salon-card {
+            margin-bottom: 20px;
+        }
+        .salon-card img {
+            height: 200px;
+            object-fit: cover;
+        }
+        .card-title {
+            font-size: 1.25rem;
+            font-weight: bold;
+        }
+        .list-group-item i {
+            margin-right: 10px;
+        }
+    </style>
+</head>
+<div class="container mt-4">
+    <div class="row">
+        {% for salon in salons %}
+        <div class="col-md-4">
+            <div class="card salon-card shadow-sm">
+                <img src="{{ salon.image.url }}" class="card-img-top" alt="{{ salon.name }}">
+                <div class="card-body">
+                    <h5 class="card-title">{{ salon.name }}</h5>
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item"><i class="fa fa-map-marker"></i> {{ salon.location }}</li>
+                    <li class="list-group-item"><i class="fa fa-phone"></i> {{ salon.contact_no }}</li>
+                </ul>
+                <div class="card-body d-flex justify-content-between">
+                    <a href="{% url 'salon_detail' salon.id %}" class="btn btn-primary">See more</a>
+                    <a href="{% url 'book_appointment' salon.id %}" class="btn btn-success">Book Now</a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

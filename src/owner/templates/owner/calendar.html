@@ -1,0 +1,31 @@
+{% comment %} {% extends 'owner_dashboard.html' %} {% endcomment %}
+
+{% block title %}
+Calendar
+{% endblock %}
+
+
+{% block contents %}
+<div class="container">
+    <h2>Appointment Calendar</h2>
+    <div id='calendar'></div>
+</div>
+
+<!-- Include FullCalendar CSS and JS -->
+<link href='https://cdn.jsdelivr.net/npm/fullcalendar@5.10.1/main.min.css' rel='stylesheet' />
+<script src='https://cdn.jsdelivr.net/npm/fullcalendar@5.10.1/main.min.js'></script>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    var calendarEl = document.getElementById('calendar');
+
+    var calendar = new FullCalendar.Calendar(calendarEl, {
+        initialView: 'dayGridMonth',
+        events: '/api/events/'  // URL to fetch calendar events
+    });
+
+    calendar.render();
+});
+</script>
+{% endblock %}
+

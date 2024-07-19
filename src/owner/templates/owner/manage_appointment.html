@@ -1,0 +1,94 @@
+{% comment %} {% extends 'owner_dashboard.html' %} {% endcomment %}
+
+{% block title %}Appointments{% endblock %}
+
+{% block contents %}
+<style>
+    .appointment-table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+    .appointment-table th,
+    .appointment-table td {
+        padding: 10px;
+        text-align: left;
+        border: 1px solid #ddd;
+    }
+
+    .appointment-table th {
+        background-color: #343a40;
+        color: white;
+    }
+
+    .appointment-table img {
+        max-width: 100px;
+        height: auto;
+        border-radius: 5px;
+    }
+
+    .btn {
+        padding: 5px 10px;
+        border-radius: 5px;
+        text-decoration: none;
+        color: white;
+    }
+
+    .btn-success {
+        background-color: #28a745;
+    }
+
+    .btn-success:hover {
+        background-color: #218838;
+    }
+
+    .btn-danger {
+        background-color: #dc3545;
+    }
+
+    .btn-danger:hover {
+        background-color: #c82333;
+    }
+</style>
+<table class="table table-bordered table-striped table-light appointment-table">
+    <thead class="table-dark">
+        <tr>
+            <th>Image</th>
+            <th>User</th>
+            <th>Contact No</th>
+            <th>Date</th>
+            <th>Time</th>
+            <th>Message</th>
+            <th>Status</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for appointment in appointments %}
+        <tr>
+            <td><img src="{{ appointment.image.url }}" alt="image"></td>
+            <td>{{ appointment.user.username }}</td>
+            <td>{{ appointment.contact_no }}</td>
+            <td>{{ appointment.date }}</td>
+            <td>{{ appointment.time }}</td>
+            <td>{{ appointment.message }}</td>
+            <td>{{ appointment.status }}</td>
+            <td>
+                {% if appointment.status == 'pending' %}
+                    <form method="post" action="{% url 'update_appointment_status' appointment.id 'accepted' %}">
+                        {% csrf_token %}
+                        <button type="submit" class="btn btn-success">Accept</button>
+                    </form>
+                    <form method="post" action="{% url 'update_appointment_status' appointment.id 'rejected' %}">
+                        {% csrf_token %}
+                        <button type="submit" class="btn btn-danger">Reject</button>
+                    </form>
+                {% else %}
+                    <p>Status: {{ appointment.status }}</p>
+                {% endif %}
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

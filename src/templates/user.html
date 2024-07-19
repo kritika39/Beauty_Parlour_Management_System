@@ -1,0 +1,16 @@
+{% extends 'base_generic.html' %}
+{% block content %}
+<h1>Welcome to Beauty Parlor Management</h1>
+<form method="get" action="{% url 'home' %}">
+    <input type="text" name="q" placeholder="Search Salons" value="{{ request.GET.q }}">
+    <button type="submit">Search</button>
+</form>
+<ul>
+    {% for salon in salons %}
+    <li>
+        <a href="{% url 'salon_detail' salon.id %}">{{ salon.name }}</a>
+        <p>{{ salon.location }}</p>
+    </li>
+    {% endfor %}
+</ul>
+{% endblock %}

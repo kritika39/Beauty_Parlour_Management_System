@@ -1,0 +1,121 @@
+ {% comment %} {% extends 'owner_dashboard.html' %} {% endcomment %}
+
+{% block title %}
+{% if form.instance.pk %}Edit{% else %}Add{% endif %} Your Salon
+{% endblock %}
+
+{% block contents %}
+<style>
+    .salon-form-container {
+        max-width: 600px;
+        margin: 0 auto;
+        padding: 20px;
+        background-color: #f9f9f9;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+    }
+
+    .salon-form-container h1 {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    .salon-form-container form {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .salon-form-container form input,
+    .salon-form-container form select,
+    .salon-form-container form textarea {
+        margin-bottom: 10px;
+        padding: 10px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+    }
+
+    .salon-form-container form button {
+        padding: 10px;
+        background-color: #007bff;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    .salon-form-container form button:hover {
+        background-color: #0056b3;
+    }
+</style>
+
+<div class="salon-form-container">
+    <h1>{% if form.instance.pk %}Edit{% else %}Add{% endif %} Your Salon</h1>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">{% if form.instance.pk %}Save Changes{% else %}Add Salon{% endif %}</button>
+    </form>
+</div>
+{% endblock %} 
+
+{% comment %} {% block content %}
+<div class="salon-form-container">
+    <h1>{% if form.instance.pk %}Edit{% else %}Add{% endif %} Your Salon</h1>
+    <form id="salon-form" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" id="submit-btn">{% if form.instance.pk %}Save Changes{% else %}Add Salon{% endif %}</button>
+    </form>
+</div>
+{% endblock %}
+
+<style>
+    .salon-form-container {
+        background-color: #f5f5f5;
+        padding: 20px;
+        border-radius: 5px;
+    }
+
+    .salon-form-container h1 {
+        color: #333;
+        font-size: 24px;
+        margin-bottom: 20px;
+    }
+
+    .salon-form-container form {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .salon-form-container form label {
+        margin-bottom: 10px;
+    }
+
+    .salon-form-container form input[type="text"],
+    .salon-form-container form input[type="number"],
+    .salon-form-container form textarea {
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        margin-bottom: 10px;
+    }
+
+    .salon-form-container form button {
+        padding: 10px 20px;
+        background-color: #333;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+</style>
+
+<script>
+    window.addEventListener('DOMContentLoaded', function() {
+        // Submit form when the submit button is clicked
+        document.getElementById('submit-btn').addEventListener('click', function(e) {
+            e.preventDefault();
+            document.getElementById('salon-form').submit();
+        });
+    });
+</script> {% endcomment %}

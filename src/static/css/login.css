@@ -1,0 +1,131 @@
+/* body {
+    font-family: 'Roboto', sans-serif;
+    background-image: url(' static/img/anime.jpg' );
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+} */
+
+.container {
+    max-width: 450px;
+    padding: 30px;
+    background-color: rgba(255, 255, 255, 0.9); /* Semi-transparent background */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+.form-block {
+    padding: 20px;
+}
+
+.form-block h2 {
+    margin-bottom: 20px;
+    font-weight: 400;
+    font-size: 24px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+.btn {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    border: none;
+    background-color: #007bff;
+    color: #fff;
+    font-size: 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.btn:hover {
+    background-color: #0056b3;
+}
+
+.login-container .top {
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.login-container .top span {
+    display: block;
+    margin-bottom: 10px;
+}
+
+.login-container .top header {
+    font-size: 32px;
+    font-weight: 500;
+}
+
+.forgot-pass {
+    color: #007bff;
+    text-decoration: none;
+}
+
+.forgot-pass:hover {
+    text-decoration: underline;
+}
+
+.control--checkbox {
+    display: flex;
+    align-items: center;
+}
+
+
+
+.control__indicator {
+    width: 20px;
+    height: 20px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    display: inline-block;
+    position: relative;
+}
+
+.control input:checked ~ .control__indicator {
+    background-color: #007bff;
+}
+
+.control__indicator::before {
+    content: '';
+    position: absolute;
+    top: 4px;
+    left: 4px;
+    width: 12px;
+    height: 12px;
+    border-radius: 2px;
+    background-color: #fff;
+    display: none;
+}
+
+.control input:checked ~ .control__indicator::before {
+    display: block;
+}
+
+.d-flex {
+    display: flex;
+    align-items: center;
+}

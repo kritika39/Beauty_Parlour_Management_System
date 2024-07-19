@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> 
+        {% block title %}
+        {% endblock %}
+    </title>
+   
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
+    <style>
+        /* General Styling */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
+
+/* Body Styling */
+body {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+
+/* Container Styling */
+.container {
+    display: flex;
+    flex: 1;
+}
+
+
+/* Sidebar Styling */
+.sidebar {
+    width: 250px;
+    background-color: palevioletred;
+    color: white;
+    padding: 20px;
+}
+
+
+.sidebar-header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+
+.sidebar-menu {
+    list-style: none;
+    padding: 0;
+}
+
+
+.sidebar-menu li {
+    margin: 20px 0;
+}
+
+
+.sidebar-menu li a {
+    color: white;
+    text-decoration: none;
+    display: block;
+    padding: 10px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+
+.sidebar-menu li a:hover {
+    background-color: #9f3051;
+}
+
+
+/* Main Content Styling */
+.main-content {
+    flex: 1;
+    padding: 20px;
+    background-color: #f4f4f4;
+    overflow-y: auto;
+}
+
+
+.top-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    border-radius: 5px;
+}
+
+
+.user-info {
+    display: flex;
+    align-items: center;
+}
+
+
+.user-info img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+
+.search-bar {
+    display: flex;
+    align-items: center;
+}
+
+
+.search-bar input {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px 0 0 5px;
+    outline: none;
+}
+
+
+.search-bar button {
+    padding: 10px;
+    background-color: indianred;
+    border: none;
+    border-radius: 0 5px 5px 0;
+    color: white;
+    cursor: pointer;
+}
+
+
+.nav-icons {
+    display: flex;
+    align-items: center;
+}
+
+
+.nav-icons i {
+    margin-left: 20px;
+    font-size: 1.2em;
+    cursor: pointer;
+}
+
+
+/* Breadcrumb Styling */
+.breadcrumb {
+    margin-bottom: 20px;
+}
+
+
+.breadcrumb a {
+    color: rgb(126, 47, 60);
+    text-decoration: none;
+}
+
+
+.breadcrumb span {
+    color: #555;
+}
+
+
+/* Dashboard Styling */
+.dashboard {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 20px;
+}
+
+
+.card {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    text-align: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+
+.card h3 {
+    margin-bottom: 10px;
+    color: black;
+}
+
+
+.card p {
+    font-size: 2em;
+    margin-bottom: 10px;
+    color: black;
+}
+
+
+.card a {
+    color: black;
+    text-decoration: none;
+}
+
+
+.card a:hover {
+    text-decoration: underline;
+}
+
+
+    </style>
+
+
+</head>
+<body>
+
+<div class="container">
+    <aside class="sidebar">
+        <div class="sidebar-header">
+            <h2>Beauty Parlor</h2>
+        </div>
+        <ul class="sidebar-menu">
+            <li><a href=""><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
+            
+            <li><a href="{% url 'booking_history' %}"><i class="fas fa-book"></i> Booking History</a></li>
+            <li><a href="#"><i class="fas fa-user-plus"></i> Invoice</a></li>
+            <li><a href="{% url 'logout'%}"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+            <li><a href="#"><i class="fas fa-user"></i> Profile</a></li>
+        </ul>
+    </aside>
+    <main class="main-content">
+        <header class="top-nav">
+            <div class="user-info">
+                <img src="https://png.pngtree.com/png-clipart/20230914/original/pngtree-hair-salon-clipart-an-illustration-of-a-girl-with-red-hair-png-image_12164236.png" alt="User Avatar">
+                    <span><p>Welcome, {{ request.user.username }}</p></span> 
+                </div>
+                <div class="search-bar">
+                 
+                    <form method="get" action="{% url 'search_salons' %}">
+                        <input type="text" name="query" placeholder="Search salons..." value="{{ request.GET.query }}">
+                        <button><i class="fas fa-search"></i></button>
+                    </form>
+                    
+                </div>
+                <div class="nav-icons">
+                    <a href="{% url 'notifications' %}"><i class="fas fa-bell"></i></a>
+                    <i class="fas fa-cog"></i>
+                </div>
+            </header>
+            
+ 
+                {%block content%}
+                {% endblock %}
+    
+             
+</body>
+</html>
+

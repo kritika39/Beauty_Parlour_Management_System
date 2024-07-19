@@ -1,0 +1,57 @@
+ {% extends 'homepage.html' %}
+
+{% block title %}
+Notification
+{% endblock %}
+
+{% block content %}
+<style>
+    .notifications {
+        font-family: Arial, sans-serif;
+    }
+    .notifications h3 {
+        color: #32b9c3;
+    }
+    .notifications ul {
+        list-style-type: none;
+        padding: 0;
+    }
+    .notifications li {
+        background-color: #ff00ff;
+        margin: 10px 0;
+        padding: 10px;
+        border: 1px solid #bf2165;
+        border-radius: 5px;
+    }
+    .notifications a {
+        color: rgb(211, 159, 74); 
+        text-decoration: none;
+    }
+    .notifications a:hover {
+        text-decoration: underline;
+    }
+    .no-notifications {
+        font-style: italic;
+        color: #7819de;
+    }
+</style>
+
+<div class="notifications">
+    {% if notifications %}
+        <h3>Notifications</h3>
+        <ul>
+            {% for notification in notifications %}
+                <li>
+                    <p>{{ notification.message }}</p>
+                    <p>Received at: {{ notification.created_at }}</p>
+                    <a href="{% url 'mark_notification_as_read' notification.id %}">Mark as read</a>
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p class="no-notifications">No new notifications.</p>
+    {% endif %}
+</div>
+
+{% endblock %} 
+

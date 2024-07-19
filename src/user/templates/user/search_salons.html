@@ -1,0 +1,78 @@
+{% extends 'homepage.html' %}
+{% load static %}
+
+{% block title %}
+Search Salons
+{% endblock %}
+
+{% block content %}
+<style>
+    body {
+        background-color:rgb(229, 126, 240) ;
+        background-size: cover;
+    }
+
+    .containers {
+        max-width: 800px;
+        margin: 50px auto;
+        background: rgba(255, 255, 255, 0.8); /* Transparent background */
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    }
+
+    h2 {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    ul {
+        list-style: none;
+        padding: 0;
+    }
+
+    .lu {
+        background: #d992cc;
+        margin: 10px 0;
+        padding: 15px;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        transition: background 0.3s;
+    }
+
+    .lu:hover {
+        background: #0e0808;
+    }
+
+    a {
+        text-decoration: none;
+        color: #007bff;
+        font-weight: bold;
+    }
+
+    a:hover {
+        color: #0056b3;
+    }
+
+    p {
+        text-align: center;
+        font-size: 18px;
+        color: #888;
+    }
+</style>
+
+<div class="containers">
+    {% if salons %}
+        <h2>Search Results</h2>
+        <ul>
+            {% for salon in salons %}
+                <li class="lu">
+                    <a href="{% url 'salon_detail' salon.id %}">{{ salon.name }}</a>
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No salons found.</p>
+    {% endif %}
+</div>
+{% endblock %}

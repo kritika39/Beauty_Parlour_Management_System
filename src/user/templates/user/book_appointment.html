@@ -1,0 +1,122 @@
+{% extends 'homepage.html' %}
+{% load static %}
+
+{% block title %}
+Book Appointment
+{% endblock %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'js/csrf_setup.js' %}">
+<style>
+ 
+
+body {
+  background: url("{% static 'img/wallpaper.jpg' %}") no-repeat center center fixed;
+  background-size: cover;
+}
+
+.wrapper {
+  max-width: 600px;
+  margin: 50px auto;
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.8); /* Transparent background */
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.input-box {
+  position: relative;
+  margin-bottom: 20px;
+}
+
+.input-box input,
+.input-box select {
+  width: 100%;
+  padding: 10px;
+  padding-left: 40px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+.input-box i {
+  position: absolute;
+  left: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 20px;
+  color: #888;
+}
+
+.btn {
+  background: #007bff;
+  color: #fff;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.btn:hover {
+  background: #0056b3;
+}
+
+</style>
+
+<div class="wrapper">
+  <form method="post" action="{% url 'book_appointment' salon.id %}" enctype="multipart/form-data">
+    {% csrf_token %}
+    <h2>Book Appointment at {{ salon.name }}</h2>
+    <div class="input-box">
+      <label for="service">Service</label>
+      {{ form.service }}
+    </div>
+    <div class="input-box">
+      <label for="contact_no">Contact Number</label>
+      {{ form.contact_no }}
+      <i class='bx bxs-contact'></i>
+    </div>
+    <div class="input-box">
+      <label for="date">Date</label>
+      {{ form.date }}
+      <i class='bx bxs-calendar'></i>
+    </div>
+    <div class="input-box">
+      <label for="time">Time</label>
+      {{ form.time }}
+      <i class='bx bxs-time'></i>
+    </div>
+    <div class="input-box">
+      <label for="image">Upload your Image</label>
+      {{ form.image }}
+    </div>
+    <button type="submit" class="btn">Make Appointment</button>
+  </form>
+</div>
+
+
+
+{% if messages %}
+  <script>
+    window.onload = function() {
+      {% for message in messages %}
+        alert("{{ message }}");
+      {% endfor %}
+    }
+  </script>
+{% endif %}
+
+
+{% endblock %}

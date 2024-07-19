@@ -1,0 +1,30 @@
+{% extends 'homepage.html' %}
+
+{% block title %}
+Salon Details - {{ salon.name }}
+{% endblock %}
+
+{% block content %}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-6">
+            <img src="{{ salon.image.url }}" class="img-fluid mb-3" alt="{{ salon.name }}">
+        </div>
+        <div class="col-md-6">
+            <h2>{{ salon.name }}</h2>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item" style="color:blue;"><strong> Opening Hours:</strong> {{ salon.opening_hours }}</li>
+                <li class="list-group-item"><i class="fa fa-map-marker"></i><strong> Location:</strong> {{ salon.location }}</li>
+                <li class="list-group-item"><i class="fa fa-phone"></i><strong> Contact Number:</strong> {{ salon.contact_no }}</li>
+            </ul>
+            <div class="mt-3">
+                <p><strong>Services:</strong> {{ salon.services }}</p>
+                <p><strong>Facilities:</strong> {{ salon.facilities }}</p>
+            </div>
+            <a href="{% url 'book_appointment' salon.id %}" class="btn btn-success mt-3">Book Now</a>
+        </div>
+    </div>
+</div>
+{% endblock %}
